@@ -72,7 +72,6 @@ Your goal is to implement the following features and improvements to the applica
 > [!TIP]
 > We understand that some of these tasks can take up a lot of time. If a task is marked with a star, you have the option of explaining your approach in writing instead of implementing it.
 
-- Make a custom button variant in the tailwind config file to standardize the card buttons.
 - Implement generic types in the `BaseDropdown` component.
 - Implement the confirmation modals so that they are rendered only when needed.
 - Make the page multilingual (static elements only) ⭐
