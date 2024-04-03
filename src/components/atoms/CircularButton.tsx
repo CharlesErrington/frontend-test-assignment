@@ -7,6 +7,8 @@ type CircularButtonProps = {
   isOpen: boolean;
   baseModalTitle?: string;
   baseModalText?: string;
+  modalButtonText?: string;
+  modalButtonAction?: () => void;
 };
 
 export function CircularButton({
@@ -16,6 +18,8 @@ export function CircularButton({
   isOpen,
   baseModalTitle,
   baseModalText,
+  modalButtonText,
+  modalButtonAction,
 }: CircularButtonProps) {
   return (
     <>
@@ -28,6 +32,8 @@ export function CircularButton({
           baseModalText={baseModalText}
           isOpen={isOpen}
           onClose={onClose}
+          modalButtonText={modalButtonText}
+          modalButtonAction={modalButtonAction}
         />
       )}
     </>

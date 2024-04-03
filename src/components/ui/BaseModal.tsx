@@ -5,12 +5,16 @@ type BaseModalProps = {
   baseModalText: string;
   isOpen: boolean;
   onClose: () => void;
+  modalButtonText?: string;
+  modalButtonAction?: () => void;
 };
 export const BaseModal = ({
   baseModalTitle,
   baseModalText,
   isOpen,
   onClose,
+  modalButtonText,
+  modalButtonAction,
 }: BaseModalProps): JSX.Element => {
   return (
     <Dialog
@@ -25,6 +29,7 @@ export const BaseModal = ({
           <Dialog.Title>{baseModalTitle}</Dialog.Title>
 
           <Dialog.Description>{baseModalText}</Dialog.Description>
+          <button onClick={modalButtonAction}>{modalButtonText}</button>
         </Dialog.Panel>
       </div>
     </Dialog>

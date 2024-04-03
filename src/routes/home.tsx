@@ -6,6 +6,7 @@ import {
   fetchCatsByBreed,
   fetchFavouriteCats,
   addCatToFavourites,
+  removeCatFromFavourites,
 } from "../services/api";
 import { Favourite, Cat } from "../types/types";
 
@@ -13,6 +14,7 @@ type MappedCat = {
   url: string;
   id: string;
   isFavourite: boolean;
+  favouriteId?: number;
 };
 
 const Home = () => {
@@ -40,10 +42,14 @@ const Home = () => {
       const isFavourite = favourites.some(
         (favourite) => favourite.image_id === cat.id
       );
+      const favouriteId = favourites.find(
+        (favourite) => favourite.image_id === cat.id
+      )?.id;
       return {
         url: cat.url,
         id: cat.id,
         isFavourite,
+        favouriteId: favouriteId,
       };
     });
     return result;
@@ -58,6 +64,19 @@ const Home = () => {
     setMappedCats((prevCats) =>
       prevCats.map((cat) =>
         cat.id === imageId ? { ...cat, isFavourite: true } : cat
+      )
+    );
+  };
+
+  const { mutate: removeFromFavourites } = useMutation({
+    mutationFn: (favouriteId: number) => removeCatFromFavourites(favouriteId),
+  });
+
+  const handleRemoveFromFavourites = (favouriteId: number) => {
+    removeFromFavourites(favouriteId);
+    setMappedCats((prevCats) =>
+      prevCats.map((cat) =>
+        cat.favouriteId === favouriteId ? { ...cat, isFavourite: false } : cat
       )
     );
   };
@@ -82,6 +101,7 @@ const Home = () => {
         cats={mappedCats}
         isLoading={isLoading}
         onAddToFavourites={handleAddToFavourites}
+        onRemoveFromFavourites={handleRemoveFromFavourites}
       />
     </main>
   );

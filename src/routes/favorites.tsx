@@ -13,6 +13,7 @@ const Favorites = () => {
     url: favourite.image.url,
     id: favourite.image_id,
     isFavourite: true,
+    favouriteId: favourite.id,
   }));
 
   return (
