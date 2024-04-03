@@ -1,20 +1,45 @@
+import { useState } from "react";
 import { CircularButtonContainer } from "./CircularButtonContainer";
-import { HiXMark, HiOutlineHeart } from "react-icons/hi2";
+import { HiXMark, HiOutlineHeart, HiHeart } from "react-icons/hi2";
 
 type CatItemProps = {
-  cat: { id: string; url: string };
+  cat: { id: string; url: string; isFavourite: boolean };
+  onAddToFavourites?: (imageId: string) => void;
 };
 
-export function CatItem({ cat }: CatItemProps) {
+export function CatItem({ cat, onAddToFavourites }: CatItemProps) {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isFavoriteModalOpen, setIsFavoriteModalOpen] = useState(false);
+
+  const handleAddToFavourites = (imageId: string) => {
+    if (onAddToFavourites) {
+      onAddToFavourites(imageId);
+    }
+  };
+
   const buttons = [
     {
-      onClick: () =>
-        console.log("Open confirmation modal -> remove from local state"),
+      onClick: () => setIsDeleteModalOpen(true),
+      onClose: () => setIsDeleteModalOpen(false),
+      isOpen: isDeleteModalOpen,
       icon: <HiXMark className="text-red-500 text-3xl" />,
+      baseModalTitle: "Delete this cat?",
+      baseModalText: "Are you sure you want to delete this cat?",
     },
     {
-      onClick: () => "Add/Remove from favorites",
-      icon: <HiOutlineHeart className="text-3xl" />,
+      onClick: () =>
+        cat.isFavourite
+          ? setIsFavoriteModalOpen(true)
+          : handleAddToFavourites(cat.id),
+      onClose: () => setIsFavoriteModalOpen(false),
+      isOpen: isFavoriteModalOpen,
+      icon: cat.isFavourite ? (
+        <HiHeart className="text-3xl" />
+      ) : (
+        <HiOutlineHeart className="text-3xl" />
+      ),
+      baseModalTitle: "Remove from favorites?",
+      baseModalText: "Are you sure you want to remove this cat from favorites?",
     },
   ];
 
