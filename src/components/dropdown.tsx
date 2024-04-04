@@ -16,9 +16,11 @@ const CatsDropdown = ({
     queryKey: ["fetchBreeds"],
   });
 
+  const values = breeds || [];
+
   return (
     <BaseDropdown
-      values={breeds}
+      values={values}
       selectedValue={selectedBreed}
       setSelectedValue={setSelectedBreed}
     />
