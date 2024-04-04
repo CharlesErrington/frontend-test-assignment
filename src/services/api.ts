@@ -1,11 +1,14 @@
 import { Favourite, Breed, Cat } from "../types/types";
 
-export const fetchCatsByBreed = async (id: string): Promise<Cat[]> => {
+export const fetchCatsByBreed = async (
+  id: string,
+  limit: number
+): Promise<Cat[]> => {
   try {
     const response = await fetch(
       `${
         import.meta.env.VITE_CAT_API_ENDPOINT_URL
-      }/images/search?breed_ids=${id}&limit=10`,
+      }/images/search?breed_ids=${id}&limit=${limit}`,
       {
         headers: {
           "x-api-key": import.meta.env.VITE_CAT_API_KEY,

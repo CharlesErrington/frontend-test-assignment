@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { CatsDropdownWrapper } from "../components/molecules/CatsDropdownWrapper";
 import { CatList } from "../components/organisims/CatList";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   fetchCatsByBreed,
   fetchFavouriteCats,
   addCatToFavourites,
   removeCatFromFavourites,
 } from "../services/api";
-import { queryClient } from "./root";
 import { Favourite, Cat } from "../types/types";
+import { SliderValue } from "@nextui-org/slider";
 
 type MappedCat = {
   url: string;
@@ -19,7 +19,9 @@ type MappedCat = {
 };
 
 const Home = () => {
+  const queryClient = useQueryClient();
   const [mappedCats, setMappedCats] = useState<MappedCat[]>([]);
+  const [limitValue, setLimitValue] = useState<SliderValue>(20);
 
   const [selectedBreed, setSelectedBreed] = useState<{
     name: string;
@@ -27,8 +29,8 @@ const Home = () => {
   }>({ name: "Abyssinian", id: "abys" });
 
   const { data: cats, isLoading: catsAreLoading } = useQuery<Cat[]>({
-    queryFn: () => fetchCatsByBreed(selectedBreed.id),
-    queryKey: ["fetchCatsByBreed", selectedBreed.id],
+    queryFn: () => fetchCatsByBreed(selectedBreed.id, limitValue as number),
+    queryKey: ["fetchCatsByBreed", selectedBreed.id, limitValue],
   });
 
   const { data: favourites, isLoading: favouritesAreLoading } = useQuery<
@@ -80,7 +82,7 @@ const Home = () => {
   });
 
   const handleRemoveFromFavourites = (id: string, favouriteId?: number) => {
-    if (!!favouriteId) {
+    if (favouriteId) {
       removeFromFavourites(favouriteId);
     }
     setMappedCats((prevCats) =>
@@ -108,6 +110,7 @@ const Home = () => {
       <CatsDropdownWrapper
         selectedBreed={selectedBreed}
         setSelectedBreed={setSelectedBreed}
+        setLimitValue={setLimitValue}
       />
       <CatList
         selectedBreed={selectedBreed}
