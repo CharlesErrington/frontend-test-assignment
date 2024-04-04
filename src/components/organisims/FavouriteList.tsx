@@ -38,11 +38,8 @@ export function FavouriteList({ cats, isLoading }: CatListProps) {
     setMappedCats((prevCats) =>
       prevCats.filter((cat) => cat.favouriteId !== favouriteId)
     );
+    setFavoriteModalOpenCatId(null);
   };
-
-  useEffect(() => {
-    console.log("mappedCats", mappedCats);
-  }, [mappedCats]);
 
   const getButtonsForCat = (cat: {
     id: string;

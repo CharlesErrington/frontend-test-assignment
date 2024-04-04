@@ -8,6 +8,7 @@ import {
   addCatToFavourites,
   removeCatFromFavourites,
 } from "../services/api";
+import { queryClient } from "./root";
 import { Favourite, Cat } from "../types/types";
 
 type MappedCat = {
@@ -57,6 +58,9 @@ const Home = () => {
 
   const { mutate: addToFavourites } = useMutation({
     mutationFn: (imageId: string) => addCatToFavourites(imageId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["fetchFavouriteCats"] });
+    },
   });
 
   const handleAddToFavourites = (imageId: string) => {
@@ -70,13 +74,18 @@ const Home = () => {
 
   const { mutate: removeFromFavourites } = useMutation({
     mutationFn: (favouriteId: number) => removeCatFromFavourites(favouriteId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["fetchFavouriteCats"] });
+    },
   });
 
-  const handleRemoveFromFavourites = (favouriteId: number) => {
-    removeFromFavourites(favouriteId);
+  const handleRemoveFromFavourites = (id: string, favouriteId?: number) => {
+    if (!!favouriteId) {
+      removeFromFavourites(favouriteId);
+    }
     setMappedCats((prevCats) =>
       prevCats.map((cat) =>
-        cat.favouriteId === favouriteId ? { ...cat, isFavourite: false } : cat
+        cat.id === id ? { ...cat, isFavourite: false } : cat
       )
     );
   };

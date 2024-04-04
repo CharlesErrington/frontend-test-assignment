@@ -15,7 +15,7 @@ type CatListProps = {
   }[];
   isLoading: boolean;
   onAddToFavourites: (imageId: string) => void;
-  onRemoveFromFavourites: (favouriteId: number) => void;
+  onRemoveFromFavourites: (id: string, favouriteId?: number) => void;
 };
 
 export function CatList({
@@ -36,45 +36,48 @@ export function CatList({
     onAddToFavourites(imageId);
   };
 
-  const handleRemoveFromFavourites = (favouriteId?: number) => {
-    if (favouriteId) {
-      onRemoveFromFavourites(favouriteId);
-    }
+  const handleRemoveFromFavourites = (id: string, favouriteId?: number) => {
+    onRemoveFromFavourites(id, favouriteId);
+    setFavoriteModalOpenCatId(null);
   };
 
   const getButtonsForCat = (cat: {
     id: string;
     isFavourite: boolean;
     favouriteId?: number;
-  }) => [
-    {
-      onClick: () => setDeleteModalOpenCatId(cat.id),
-      onClose: () => setDeleteModalOpenCatId(null),
-      isOpen: deleteModalOpenCatId === cat.id,
-      icon: <HiXMark className="text-red-500 text-3xl" />,
-      baseModalTitle: "Delete this cat?",
-      baseModalText: "Are you sure you want to delete this cat?",
-      modalButtonText: "Remove",
-      modalButtonAction: () => console.log("Delete"),
-    },
-    {
-      onClick: () =>
-        cat.isFavourite
-          ? setFavoriteModalOpenCatId(cat.id)
-          : handleAddToFavourites(cat.id),
-      onClose: () => setFavoriteModalOpenCatId(null),
-      isOpen: favoriteModalOpenCatId === cat.id,
-      icon: cat.isFavourite ? (
-        <HiHeart className="text-red-500 text-3xl" />
-      ) : (
-        <HiOutlineHeart className="text-3xl" />
-      ),
-      baseModalTitle: "Remove from favorites?",
-      baseModalText: "Are you sure you want to remove this cat from favorites?",
-      modalButtonText: "Remove",
-      modalButtonAction: () => handleRemoveFromFavourites(cat.favouriteId),
-    },
-  ];
+  }) => {
+    return [
+      {
+        onClick: () => setDeleteModalOpenCatId(cat.id),
+        onClose: () => setDeleteModalOpenCatId(null),
+        isOpen: deleteModalOpenCatId === cat.id,
+        icon: <HiXMark className="text-red-500 text-3xl" />,
+        baseModalTitle: "Delete this cat?",
+        baseModalText: "Are you sure you want to delete this cat?",
+        modalButtonText: "Remove",
+        modalButtonAction: () => console.log("Delete"),
+      },
+      {
+        onClick: () =>
+          cat.isFavourite
+            ? setFavoriteModalOpenCatId(cat.id)
+            : handleAddToFavourites(cat.id),
+        onClose: () => setFavoriteModalOpenCatId(null),
+        isOpen: favoriteModalOpenCatId === cat.id,
+        icon: cat.isFavourite ? (
+          <HiHeart className="text-red-500 text-3xl" />
+        ) : (
+          <HiOutlineHeart className="text-3xl" />
+        ),
+        baseModalTitle: "Remove from favorites?",
+        baseModalText:
+          "Are you sure you want to remove this cat from favorites?",
+        modalButtonText: "Remove",
+        modalButtonAction: () =>
+          handleRemoveFromFavourites(cat.id, cat.favouriteId),
+      },
+    ];
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
