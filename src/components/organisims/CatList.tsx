@@ -60,8 +60,9 @@ export function CatList({
         isOpen: deleteModalOpenCatId === cat.id,
         icon: <HiXMark className="text-red-500 text-3xl" />,
         baseModalTitle: "Delete this cat?",
-        baseModalText: "Are you sure you want to delete this cat?",
-        modalButtonText: "Remove",
+        baseModalText:
+          "Are you sure you want to delete this cat? This cannot be undone.",
+        modalButtonText: "Delete",
         modalButtonAction: () => handleDeleteCat(cat.id),
       },
       {
