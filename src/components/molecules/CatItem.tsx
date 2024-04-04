@@ -1,7 +1,7 @@
 import { CircularButtonContainer } from "./CircularButtonContainer";
 
 type CatItemProps = {
-  cat: { id: string; url: string; isFavourite: boolean };
+  cat: { id: string; url: string };
   buttons: {
     icon: JSX.Element;
     onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;

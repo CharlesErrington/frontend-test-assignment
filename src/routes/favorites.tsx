@@ -12,7 +12,6 @@ const Favorites = () => {
   const mappedFavourites = favourites?.map((favourite) => ({
     url: favourite.image.url,
     id: favourite.image_id,
-    isFavourite: true,
     favouriteId: favourite.id,
   }));
 

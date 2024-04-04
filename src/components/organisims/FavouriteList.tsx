@@ -7,7 +7,6 @@ import { removeCatFromFavourites } from "../../services/api";
 type Cat = {
   url: string;
   id: string;
-  isFavourite: boolean;
   favouriteId: number;
 };
 
@@ -41,11 +40,7 @@ export function FavouriteList({ cats, isLoading }: CatListProps) {
     setFavoriteModalOpenCatId(null);
   };
 
-  const getButtonsForCat = (cat: {
-    id: string;
-    isFavourite: boolean;
-    favouriteId: number;
-  }) => [
+  const getButtonsForCat = (cat: { id: string; favouriteId: number }) => [
     {
       onClick: () => setFavoriteModalOpenCatId(cat.id),
       onClose: () => setFavoriteModalOpenCatId(null),
