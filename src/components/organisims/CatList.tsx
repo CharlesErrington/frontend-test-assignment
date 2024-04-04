@@ -16,6 +16,7 @@ type CatListProps = {
   isLoading: boolean;
   onAddToFavourites: (imageId: string) => void;
   onRemoveFromFavourites: (id: string, favouriteId?: number) => void;
+  deleteCat: (id: string) => void;
 };
 
 export function CatList({
@@ -24,6 +25,7 @@ export function CatList({
   isLoading,
   onAddToFavourites,
   onRemoveFromFavourites,
+  deleteCat,
 }: CatListProps) {
   const [deleteModalOpenCatId, setDeleteModalOpenCatId] = useState<
     string | null
@@ -41,6 +43,11 @@ export function CatList({
     setFavoriteModalOpenCatId(null);
   };
 
+  const handleDeleteCat = (imageId: string) => {
+    deleteCat(imageId);
+    setDeleteModalOpenCatId(null);
+  };
+
   const getButtonsForCat = (cat: {
     id: string;
     isFavourite: boolean;
@@ -55,7 +62,7 @@ export function CatList({
         baseModalTitle: "Delete this cat?",
         baseModalText: "Are you sure you want to delete this cat?",
         modalButtonText: "Remove",
-        modalButtonAction: () => console.log("Delete"),
+        modalButtonAction: () => handleDeleteCat(cat.id),
       },
       {
         onClick: () =>

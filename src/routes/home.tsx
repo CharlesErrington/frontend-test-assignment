@@ -90,6 +90,10 @@ const Home = () => {
     );
   };
 
+  const deleteCat = (imageId: string) => {
+    setMappedCats((prevCats) => prevCats.filter((cat) => cat.id !== imageId));
+  };
+
   useEffect(() => {
     if (cats && favourites) {
       const result = catMapper(cats, favourites);
@@ -111,6 +115,7 @@ const Home = () => {
         isLoading={isLoading}
         onAddToFavourites={handleAddToFavourites}
         onRemoveFromFavourites={handleRemoveFromFavourites}
+        deleteCat={deleteCat}
       />
     </main>
   );
