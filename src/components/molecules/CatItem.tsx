@@ -5,12 +5,6 @@ type CatItemProps = {
   buttons: {
     icon: JSX.Element;
     onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
-    onClose: () => void;
-    isOpen: boolean;
-    baseModalTitle?: string;
-    baseModalText?: string;
-    modalButtonText?: string;
-    modalButtonAction?: () => void;
   }[];
 };
 

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { CatsDropdownWrapper } from "../components/molecules/CatsDropdownWrapper";
 import { CatList } from "../components/organisims/CatList";
+import { DeleteCatsModal } from "../components/molecules/DeleteCatsModal";
+import { RemoveFavouritesModal } from "../components/molecules/RemoveFavouritesModal";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   fetchCatsByBreed,
@@ -76,12 +78,19 @@ const Home = () => {
 
   const { mutate: removeFromFavourites } = useMutation({
     mutationFn: (favouriteId: number) => removeCatFromFavourites(favouriteId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["fetchFavouriteCats"] });
+    onSuccess: (_, variables) => {
+      queryClient.setQueryData(
+        ["fetchFavouriteCats"],
+        (favourites: Favourite[]) =>
+          favourites.filter((favourite) => favourite.id !== variables)
+      );
     },
   });
 
-  const handleRemoveFromFavourites = (id: string, favouriteId?: number) => {
+  const handleRemoveFromFavourites = (
+    id: string,
+    favouriteId?: number | null
+  ) => {
     if (favouriteId) {
       removeFromFavourites(favouriteId);
     }
@@ -117,9 +126,9 @@ const Home = () => {
         cats={mappedCats}
         isLoading={isLoading}
         onAddToFavourites={handleAddToFavourites}
-        onRemoveFromFavourites={handleRemoveFromFavourites}
-        deleteCat={deleteCat}
       />
+      <DeleteCatsModal deleteCat={deleteCat} />
+      <RemoveFavouritesModal removeFavourite={handleRemoveFromFavourites} />
     </main>
   );
 };

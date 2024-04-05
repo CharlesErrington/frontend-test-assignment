@@ -4,12 +4,6 @@ type CircularButtonContainerProps = {
   buttons: {
     icon: JSX.Element;
     onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
-    onClose: () => void;
-    isOpen: boolean;
-    baseModalTitle?: string;
-    baseModalText?: string;
-    modalButtonText?: string;
-    modalButtonAction?: () => void;
   }[];
 };
 
@@ -24,12 +18,6 @@ export function CircularButtonContainer({
             key={index}
             onClick={button.onClick}
             icon={button.icon}
-            baseModalTitle={button.baseModalTitle}
-            baseModalText={button.baseModalText}
-            modalButtonText={button.modalButtonText}
-            modalButtonAction={button.modalButtonAction}
-            isOpen={button.isOpen}
-            onClose={button.onClose}
           />
         ))}
       </div>
