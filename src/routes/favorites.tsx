@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { fetchFavouriteCats, removeCatFromFavourites } from "../services/api";
+import { useRemoveFromFavourites } from "../hooks/useRemoveFromFavourites";
+import { useGetFavouriteCats } from "../hooks/useGetFavouriteCats";
 import { RemoveFavouritesModal } from "../components/molecules/RemoveFavouritesModal";
 import { FavouriteList } from "../components/organisims/FavouriteList";
 import { Favourite } from "../types/types";
@@ -13,12 +13,7 @@ type Cat = {
 
 const Favorites = () => {
   const [mappedCats, setMappedCats] = useState<Cat[]>([]);
-
-  const queryClient = useQueryClient();
-  const { data: favourites, isLoading } = useQuery<Favourite[]>({
-    queryFn: () => fetchFavouriteCats(),
-    queryKey: ["fetchFavouriteCats"],
-  });
+  const { favourites, favouritesAreLoading } = useGetFavouriteCats();
 
   useEffect(() => {
     if (favourites) {
@@ -34,17 +29,7 @@ const Favorites = () => {
     }));
   };
 
-  const { mutate: removeFromFavourites } = useMutation({
-    mutationFn: (favouriteId: number) => removeCatFromFavourites(favouriteId),
-    onSuccess: (_, variables) => {
-      queryClient.setQueryData(
-        ["fetchFavouriteCats"],
-        (favourites: Favourite[]) =>
-          favourites.filter((favourite) => favourite.id !== variables)
-      );
-    },
-  });
-
+  const { removeFromFavourites } = useRemoveFromFavourites();
   const handleRemoveFromFavourites = (
     id: string,
     favouriteId?: number | null
@@ -57,7 +42,7 @@ const Favorites = () => {
 
   return (
     <>
-      <FavouriteList cats={mappedCats} isLoading={isLoading} />
+      <FavouriteList cats={mappedCats} isLoading={favouritesAreLoading} />
       <RemoveFavouritesModal removeFavourite={handleRemoveFromFavourites} />
     </>
   );

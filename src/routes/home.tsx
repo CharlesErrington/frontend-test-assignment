@@ -3,13 +3,10 @@ import { CatsDropdownWrapper } from "../components/molecules/CatsDropdownWrapper
 import { CatList } from "../components/organisims/CatList";
 import { DeleteCatsModal } from "../components/molecules/DeleteCatsModal";
 import { RemoveFavouritesModal } from "../components/molecules/RemoveFavouritesModal";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import {
-  fetchCatsByBreed,
-  fetchFavouriteCats,
-  addCatToFavourites,
-  removeCatFromFavourites,
-} from "../services/api";
+import { useGetCatsByBreed } from "../hooks/useGetCatsByBreed";
+import { useGetFavouriteCats } from "../hooks/useGetFavouriteCats";
+import { useAddToFavourites } from "../hooks/useAddToFavourites";
+import { useRemoveFromFavourites } from "../hooks/useRemoveFromFavourites";
 import { Favourite, Cat } from "../types/types";
 import { SliderValue } from "@nextui-org/slider";
 
@@ -21,26 +18,19 @@ type MappedCat = {
 };
 
 const Home = () => {
-  const queryClient = useQueryClient();
   const [mappedCats, setMappedCats] = useState<MappedCat[]>([]);
   const [limitValue, setLimitValue] = useState<SliderValue>(20);
-
   const [selectedBreed, setSelectedBreed] = useState<{
     name: string;
     id: string;
   }>({ name: "Abyssinian", id: "abys" });
 
-  const { data: cats, isLoading: catsAreLoading } = useQuery<Cat[]>({
-    queryFn: () => fetchCatsByBreed(selectedBreed.id, limitValue as number),
-    queryKey: ["fetchCatsByBreed", selectedBreed.id, limitValue],
-  });
+  const { cats, catsAreLoading } = useGetCatsByBreed(
+    selectedBreed.id,
+    limitValue as number
+  );
 
-  const { data: favourites, isLoading: favouritesAreLoading } = useQuery<
-    Favourite[]
-  >({
-    queryFn: () => fetchFavouriteCats(),
-    queryKey: ["fetchFavouriteCats"],
-  });
+  const { favourites, favouritesAreLoading } = useGetFavouriteCats();
 
   const catMapper = (cats: Cat[], favourites: Favourite[]) => {
     const result = cats.map((cat) => {
@@ -60,12 +50,7 @@ const Home = () => {
     return result;
   };
 
-  const { mutate: addToFavourites } = useMutation({
-    mutationFn: (imageId: string) => addCatToFavourites(imageId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["fetchFavouriteCats"] });
-    },
-  });
+  const { addToFavourites } = useAddToFavourites();
 
   const handleAddToFavourites = (imageId: string) => {
     addToFavourites(imageId);
@@ -76,17 +61,7 @@ const Home = () => {
     );
   };
 
-  const { mutate: removeFromFavourites } = useMutation({
-    mutationFn: (favouriteId: number) => removeCatFromFavourites(favouriteId),
-    onSuccess: (_, variables) => {
-      queryClient.setQueryData(
-        ["fetchFavouriteCats"],
-        (favourites: Favourite[]) =>
-          favourites.filter((favourite) => favourite.id !== variables)
-      );
-    },
-  });
-
+  const { removeFromFavourites } = useRemoveFromFavourites();
   const handleRemoveFromFavourites = (
     id: string,
     favouriteId?: number | null
