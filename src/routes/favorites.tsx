@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { useRemoveFromFavourites } from "../hooks/useRemoveFromFavourites";
-import { useGetFavouriteCats } from "../hooks/useGetFavouriteCats";
+import { useRemoveFromFavourites } from "../hooks/queries/useRemoveFromFavourites";
+import { useGetFavouriteCats } from "../hooks/queries/useGetFavouriteCats";
+import { favouriteMapper } from "../utils/mapper";
 import { RemoveFavouritesModal } from "../components/molecules/RemoveFavouritesModal";
 import { FavouriteList } from "../components/organisims/FavouriteList";
-import { Favourite } from "../types/types";
 
 type Cat = {
   url: string;
@@ -17,17 +17,9 @@ const Favorites = () => {
 
   useEffect(() => {
     if (favourites) {
-      setMappedCats(mappedFavourites(favourites));
+      setMappedCats(favouriteMapper(favourites));
     }
   }, [favourites]);
-
-  const mappedFavourites = (favourites: Favourite[]) => {
-    return favourites?.map((favourite) => ({
-      url: favourite.image.url,
-      id: favourite.image_id,
-      favouriteId: favourite.id,
-    }));
-  };
 
   const { removeFromFavourites } = useRemoveFromFavourites();
   const handleRemoveFromFavourites = (

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchFavouriteCats } from "../services/api";
-import { Favourite } from "../types/types";
+import { fetchFavouriteCats } from "../../services/api";
+import { Favourite } from "../../types/types";
 
 export function useGetFavouriteCats() {
   const { data, isLoading } = useQuery<Favourite[]>({

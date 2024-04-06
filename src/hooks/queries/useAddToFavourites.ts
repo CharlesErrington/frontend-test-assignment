@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { addCatToFavourites } from "../services/api";
+import { addCatToFavourites } from "../../services/api";
 
 export function useAddToFavourites() {
   const queryClient = useQueryClient();

@@ -3,12 +3,12 @@ import { CatsDropdownWrapper } from "../components/molecules/CatsDropdownWrapper
 import { CatList } from "../components/organisims/CatList";
 import { DeleteCatsModal } from "../components/molecules/DeleteCatsModal";
 import { RemoveFavouritesModal } from "../components/molecules/RemoveFavouritesModal";
-import { useGetCatsByBreed } from "../hooks/useGetCatsByBreed";
-import { useGetFavouriteCats } from "../hooks/useGetFavouriteCats";
-import { useAddToFavourites } from "../hooks/useAddToFavourites";
-import { useRemoveFromFavourites } from "../hooks/useRemoveFromFavourites";
-import { Favourite, Cat } from "../types/types";
+import { useGetCatsByBreed } from "../hooks/queries/useGetCatsByBreed";
+import { useGetFavouriteCats } from "../hooks/queries/useGetFavouriteCats";
+import { useAddToFavourites } from "../hooks/queries/useAddToFavourites";
+import { useRemoveFromFavourites } from "../hooks/queries/useRemoveFromFavourites";
 import { SliderValue } from "@nextui-org/slider";
+import { catMapper } from "../utils/mapper";
 
 type MappedCat = {
   url: string;
@@ -32,26 +32,7 @@ const Home = () => {
 
   const { favourites, favouritesAreLoading } = useGetFavouriteCats();
 
-  const catMapper = (cats: Cat[], favourites: Favourite[]) => {
-    const result = cats.map((cat) => {
-      const isFavourite = favourites.some(
-        (favourite) => favourite.image_id === cat.id
-      );
-      const favouriteId = favourites.find(
-        (favourite) => favourite.image_id === cat.id
-      )?.id;
-      return {
-        url: cat.url,
-        id: cat.id,
-        isFavourite,
-        favouriteId: favouriteId,
-      };
-    });
-    return result;
-  };
-
   const { addToFavourites } = useAddToFavourites();
-
   const handleAddToFavourites = (imageId: string) => {
     addToFavourites(imageId);
     setMappedCats((prevCats) =>
