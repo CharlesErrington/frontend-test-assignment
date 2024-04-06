@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CatsDropdownWrapper } from "../components/molecules/CatsDropdownWrapper";
+import { FilterWrapper } from "../components/molecules/FilterWrapper";
 import { CatList } from "../components/organisims/CatList";
 import { DeleteCatsModal } from "../components/molecules/DeleteCatsModal";
 import { RemoveFavouritesModal } from "../components/molecules/RemoveFavouritesModal";
@@ -72,7 +72,7 @@ const Home = () => {
 
   return (
     <main className="container mx-auto px-4 md:px-8">
-      <CatsDropdownWrapper
+      <FilterWrapper
         selectedBreed={selectedBreed}
         setSelectedBreed={setSelectedBreed}
         setLimitValue={setLimitValue}

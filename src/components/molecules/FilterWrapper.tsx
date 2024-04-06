@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 import CatsDropdown from "../dropdown";
 import { Slider, SliderValue } from "@nextui-org/slider";
 
-type CatsDropdownWrapperProps = {
+type FilterWrapperProps = {
   selectedBreed: {
     name: string;
     id: string;
@@ -12,11 +12,11 @@ type CatsDropdownWrapperProps = {
   setLimitValue: Dispatch<SetStateAction<SliderValue>>;
 };
 
-export function CatsDropdownWrapper({
+export function FilterWrapper({
   selectedBreed,
   setSelectedBreed,
   setLimitValue,
-}: CatsDropdownWrapperProps) {
+}: FilterWrapperProps) {
   return (
     <div className=" w-72 z-10">
       <div className="my-3">
