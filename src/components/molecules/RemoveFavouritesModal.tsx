@@ -25,6 +25,7 @@ export const RemoveFavouritesModal = ({
 
   return (
     <BaseModal
+      data-cy="remove-favourites-modal"
       baseModalTitle="💔 Remove from favorites?"
       baseModalText="Are you sure you want to remove this cat from favorites?"
       isOpen={isOpen}

@@ -20,13 +20,14 @@ export function FilterWrapper({
   setLimitValue,
 }: FilterWrapperProps) {
   return (
-    <div className=" w-72 z-10">
+    <div className=" w-72 z-10" data-cy="filter-wrapper">
       <div className="my-3">
         <CatsDropdown
           selectedBreed={selectedBreed}
           setSelectedBreed={setSelectedBreed}
         />
         <Slider
+          data-cy="slider"
           size="sm"
           step={5}
           color="foreground"

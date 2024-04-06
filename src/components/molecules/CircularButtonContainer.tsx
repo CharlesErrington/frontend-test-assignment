@@ -4,6 +4,7 @@ type CircularButtonContainerProps = {
   buttons: {
     icon: JSX.Element;
     onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+    dataCyValue?: string;
   }[];
 };
 
@@ -18,6 +19,7 @@ export function CircularButtonContainer({
             key={index}
             onClick={button.onClick}
             icon={button.icon}
+            dataCyValue={button.dataCyValue}
           />
         ))}
       </div>

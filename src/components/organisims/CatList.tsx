@@ -41,6 +41,7 @@ export function CatList({
       {
         onClick: () => openDeleteCatsModal(cat.id),
         icon: <HiXMark className="text-red-500 text-3xl" />,
+        dataCyValue: "delete-button",
       },
       {
         onClick: () =>
@@ -48,10 +49,11 @@ export function CatList({
             ? openRemoveFromFavouritesModal(cat.id, cat.favouriteId)
             : handleAddToFavourites(cat.id),
         icon: cat.isFavourite ? (
-          <HiHeart className="text-red-500 text-3xl" />
+          <HiHeart data-cy="HiHeart" className="text-red-500 text-3xl" />
         ) : (
-          <HiOutlineHeart className="text-3xl" />
+          <HiOutlineHeart data-cy="HiOutlineHeart" data- className="text-3xl" />
         ),
+        dataCyValue: "favourite-button",
       },
     ];
   };
@@ -60,7 +62,10 @@ export function CatList({
     return <div>Loading...</div>;
   }
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+    <div
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
+      data-cy="cat-list"
+    >
       {selectedBreed &&
         cats?.map((cat, index) => (
           <CatItem key={index} cat={cat} buttons={getButtonsForCat(cat)} />

@@ -5,12 +5,13 @@ type CatItemProps = {
   buttons: {
     icon: JSX.Element;
     onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+    dataCyValue?: string;
   }[];
 };
 
 export function CatItem({ cat, buttons }: CatItemProps) {
   return (
-    <div key={cat.id}>
+    <div key={cat.id} data-cy="cat-item">
       <div
         key={cat.id}
         className="relative border rounded-lg overflow-hidden shadow-md flex justify-center"

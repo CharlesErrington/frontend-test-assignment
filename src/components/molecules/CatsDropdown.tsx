@@ -14,11 +14,13 @@ const CatsDropdown = ({
   const values = breeds || [];
 
   return (
-    <BaseDropdown
-      values={values}
-      selectedValue={selectedBreed}
-      setSelectedValue={setSelectedBreed}
-    />
+    <div data-cy="cats-dropdown">
+      <BaseDropdown
+        values={values}
+        selectedValue={selectedBreed}
+        setSelectedValue={setSelectedBreed}
+      />
+    </div>
   );
 };
 

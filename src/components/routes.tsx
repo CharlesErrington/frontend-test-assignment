@@ -15,6 +15,7 @@ const Routes = () => {
             <NavLink
               key={idx}
               to={route.path}
+              data-cy={route.name}
               className={({ isActive }) =>
                 clsx(
                   isActive &&
