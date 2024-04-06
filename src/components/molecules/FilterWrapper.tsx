@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-import CatsDropdown from "../dropdown";
+import CatsDropdown from "./CatsDropdown";
 import { Slider, SliderValue } from "@nextui-org/slider";
 
 type FilterWrapperProps = {

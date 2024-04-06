@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
-import { BaseDropdown } from "./ui/BaseDropdown";
-import { useGetBreeds } from "../hooks/queries/useGetBreeds";
+import { BaseDropdown } from "../atoms/BaseDropdown";
+import { useGetBreeds } from "../../hooks/queries/useGetBreeds";
 
 const CatsDropdown = ({
   setSelectedBreed,

@@ -7,9 +7,8 @@ const routes = [
 ];
 
 const Routes = () => {
-  // Implement active styling for the current route
   return (
-    <div className="flex py-5 px-4 md:px-8 border shadow-md ">
+    <div className="flex py-5 px-4 md:px-8 border shadow-md">
       <div className="container flex space-x-4 ">
         {routes.map((route, idx) => {
           return (
