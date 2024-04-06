@@ -76,6 +76,7 @@ const Home = () => {
         selectedBreed={selectedBreed}
         setSelectedBreed={setSelectedBreed}
         setLimitValue={setLimitValue}
+        limitValue={limitValue}
       />
       <CatList
         selectedBreed={selectedBreed}

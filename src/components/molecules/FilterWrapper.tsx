@@ -4,6 +4,7 @@ import CatsDropdown from "./CatsDropdown";
 import { Slider, SliderValue } from "@nextui-org/slider";
 
 type FilterWrapperProps = {
+  limitValue: SliderValue;
   selectedBreed: {
     name: string;
     id: string;
@@ -13,6 +14,7 @@ type FilterWrapperProps = {
 };
 
 export function FilterWrapper({
+  limitValue,
   selectedBreed,
   setSelectedBreed,
   setLimitValue,
@@ -32,7 +34,7 @@ export function FilterWrapper({
           showSteps={true}
           maxValue={50}
           minValue={5}
-          defaultValue={10}
+          defaultValue={limitValue}
           showTooltip={true}
           onChangeEnd={setLimitValue}
           className="max-w-md"
