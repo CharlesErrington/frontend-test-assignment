@@ -6,7 +6,10 @@ type CircularButtonProps = {
 export function CircularButton({ icon, onClick }: CircularButtonProps) {
   return (
     <>
-      <button className="bg-gray-100 p-4 rounded-full" onClick={onClick}>
+      <button
+        className="h-[100%] aspect-square bg-gray-100 p-4 rounded-full grid place-items-center"
+        onClick={onClick}
+      >
         {icon}
       </button>
     </>

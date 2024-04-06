@@ -71,7 +71,7 @@ const Home = () => {
   const isLoading = catsAreLoading || favouritesAreLoading;
 
   return (
-    <main className="container mx-auto">
+    <main className="container mx-auto px-4 md:px-8">
       <CatsDropdownWrapper
         selectedBreed={selectedBreed}
         setSelectedBreed={setSelectedBreed}

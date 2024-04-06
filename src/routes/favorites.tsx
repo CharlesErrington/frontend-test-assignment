@@ -33,10 +33,10 @@ const Favorites = () => {
   };
 
   return (
-    <>
+    <main className="container mx-auto px-4 md:px-8 py-4">
       <FavouriteList cats={mappedCats} isLoading={favouritesAreLoading} />
       <RemoveFavouritesModal removeFavourite={handleRemoveFromFavourites} />
-    </>
+    </main>
   );
 };
 

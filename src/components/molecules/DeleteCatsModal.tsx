@@ -20,7 +20,7 @@ export const DeleteCatsModal = ({ deleteCat }: DeleteCatsModalProps) => {
   };
   return (
     <BaseModal
-      baseModalTitle="Delete this cat?"
+      baseModalTitle="❌ Delete this cat?"
       baseModalText="Are you sure you want to delete this cat? This cannot be undone."
       isOpen={isOpen}
       onClose={handleClose}

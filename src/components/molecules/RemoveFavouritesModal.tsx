@@ -25,7 +25,7 @@ export const RemoveFavouritesModal = ({
 
   return (
     <BaseModal
-      baseModalTitle="Remove from favorites?"
+      baseModalTitle="💔 Remove from favorites?"
       baseModalText="Are you sure you want to remove this cat from favorites?"
       isOpen={isOpen}
       onClose={handleClose}

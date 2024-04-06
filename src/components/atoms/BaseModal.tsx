@@ -39,7 +39,7 @@ export const BaseModal = ({
 
             <div className="flex justify-end">
               <button
-                className="inline-flex items-center justify-center h-9 px-4 py-2 mt-2 text-sm font-medium transition-colors duration-150 ease-in-out bg-background border border-input rounded-md shadow-sm sm:mt-0 whitespace-nowrap hover:bg-gray-100 focus:outline-none"
+                className="inline-flex items-center justify-center h-9 px-4 py-2 text-sm font-medium transition-colors duration-150 ease-in-out bg-background border border-input rounded-md shadow-sm sm:mt-0 whitespace-nowrap hover:bg-gray-100 focus:outline-none"
                 onClick={onClose}
               >
                 Cancel

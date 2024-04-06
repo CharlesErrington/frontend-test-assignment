@@ -29,7 +29,7 @@ export function FavouriteList({ cats, isLoading }: CatListProps) {
     return <div>Loading...</div>;
   }
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
       {cats &&
         cats?.map((cat, index) => (
           <CatItem key={index} cat={cat} buttons={getButtonsForCat(cat)} />
