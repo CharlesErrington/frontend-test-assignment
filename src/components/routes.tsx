@@ -9,8 +9,8 @@ const routes = [
 const Routes = () => {
   // Implement active styling for the current route
   return (
-    <div className="flex py-5  border shadow-md ">
-      <div className="container mx-auto flex space-x-4 ">
+    <div className="flex py-5 px-4 md:px-8 border shadow-md ">
+      <div className="container flex space-x-4 ">
         {routes.map((route, idx) => {
           return (
             <NavLink
@@ -19,8 +19,8 @@ const Routes = () => {
               className={({ isActive }) =>
                 clsx(
                   isActive &&
-                    "underline-offset-4 decoration-simbase-orange-500 underline",
-                  "text-xl font-bold text-simbase-blue-950 underline-offset-4 hover:underline hover:decoration-simbase-orange-500"
+                    "underline-offset-4 decoration-orange-500 underline",
+                  "text-xl font-bold text-blue-950 underline-offset-4 hover:underline hover:decoration-orange-500"
                 )
               }
             >
