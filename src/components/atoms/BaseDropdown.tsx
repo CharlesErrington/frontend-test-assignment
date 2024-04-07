@@ -6,7 +6,6 @@ import { Fragment } from "react/jsx-runtime";
 
 type BaseDropdownValue = {
   name: string;
-  id: string;
 };
 export const BaseDropdown = <T extends BaseDropdownValue>({
   values,
