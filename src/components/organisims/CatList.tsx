@@ -40,7 +40,7 @@ export function CatList({
     return [
       {
         onClick: () => openDeleteCatsModal(cat.id),
-        icon: <HiXMark className="text-red-500 text-3xl" />,
+        icon: <HiXMark className="text-simbase-blue-900 text-3xl" />,
         dataCyValue: "delete-button",
       },
       {
@@ -49,9 +49,16 @@ export function CatList({
             ? openRemoveFromFavouritesModal(cat.id, cat.favouriteId)
             : handleAddToFavourites(cat.id),
         icon: cat.isFavourite ? (
-          <HiHeart data-cy="HiHeart" className="text-red-500 text-3xl" />
+          <HiHeart
+            data-cy="HiHeart"
+            className="text-simbase-orange-800 text-3xl"
+          />
         ) : (
-          <HiOutlineHeart data-cy="HiOutlineHeart" data- className="text-3xl" />
+          <HiOutlineHeart
+            data-cy="HiOutlineHeart"
+            data-
+            className="text-simbase-orange-500 text-3xl"
+          />
         ),
         dataCyValue: "favourite-button",
       },

@@ -27,9 +27,9 @@ export const BaseDropdown = <T extends BaseDropdownValue>({
   return (
     <Combobox value={selectedValue} onChange={setSelectedValue}>
       <div className="relative mt-1 z-10">
-        <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 focus:ring-transparent sm:text-sm">
+        <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus:ring-transparent sm:text-sm">
           <Combobox.Input
-            className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:outline-1 rounded-lg "
+            className="w-full py-2 pl-3 pr-10 text-sm leading-5 text-simbase-blue-900 rounded-lg border border-transparent focus:outline-none focus:border-simbase-orange-500"
             displayValue={(value: BaseDropdownValue) => value.name}
             onChange={(event) => setSearchString(event.target.value)}
           />
@@ -49,7 +49,7 @@ export const BaseDropdown = <T extends BaseDropdownValue>({
         >
           <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
             {filteredValues?.length === 0 && searchString !== "" ? (
-              <div className="relative cursor-default select-none px-4 py-2 text-gray-700">
+              <div className="relative cursor-default select-none px-4 py-2 text-simbase-blue-900">
                 Nothing found.
               </div>
             ) : (
@@ -58,7 +58,9 @@ export const BaseDropdown = <T extends BaseDropdownValue>({
                   key={value.name}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                      active ? "bg-teal-600 text-white" : "text-gray-900"
+                      active
+                        ? "bg-simbase-orange-500 text-white"
+                        : "text-simbase-blue-900"
                     }`
                   }
                   value={value}
@@ -75,7 +77,7 @@ export const BaseDropdown = <T extends BaseDropdownValue>({
                       {selected ? (
                         <span
                           className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                            active ? "text-white" : "text-teal-600"
+                            active ? "text-white" : "text-simbase-orange-800"
                           }`}
                         >
                           <HiCheck className="h-5 w-5" aria-hidden="true" />

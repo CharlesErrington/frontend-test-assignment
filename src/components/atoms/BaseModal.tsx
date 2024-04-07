@@ -28,7 +28,7 @@ export const BaseModal = ({
         <Dialog.Panel className="w-96 p-4 mx-auto max-w-sm rounded-lg bg-white">
           <div className="flex flex-col gap-4">
             <div>
-              <Dialog.Title className="font-semibold text-lg">
+              <Dialog.Title className="font-semibold text-simbase-blue-900 text-lg">
                 {baseModalTitle}
               </Dialog.Title>
 
@@ -39,13 +39,13 @@ export const BaseModal = ({
 
             <div className="flex justify-end">
               <button
-                className="inline-flex items-center justify-center h-9 px-4 py-2 text-sm font-medium transition-colors duration-150 ease-in-out bg-background border border-input rounded-md shadow-sm sm:mt-0 whitespace-nowrap hover:bg-gray-100 focus:outline-none"
+                className="inline-flex items-center justify-center h-9 px-4 py-2 text-sm font-medium text-simbase-blue-900 transition-colors duration-150 ease-in-out bg-background border border-input rounded-md shadow-sm sm:mt-0 whitespace-nowrap hover:bg-gray-100 focus:outline-none"
                 onClick={onClose}
               >
                 Cancel
               </button>
               <button
-                className="inline-flex items-center justify-center ml-2 h-9 px-4 py-2 text-sm font-medium text-primary-foreground transition-colors duration-150 ease-in-out bg-black rounded-md shadow sm:space-x-2 whitespace-nowrap hover:bg-gray-800"
+                className="inline-flex items-center justify-center ml-2 h-9 px-4 py-2 text-sm font-medium text-primary-foreground transition-colors duration-150 ease-in-out bg-simbase-blue-900 rounded-md shadow sm:space-x-2 whitespace-nowrap hover:bg-simbase-blue-800"
                 onClick={modalButtonAction}
               >
                 {modalButtonText}

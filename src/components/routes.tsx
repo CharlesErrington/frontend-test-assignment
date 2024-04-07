@@ -19,8 +19,8 @@ const Routes = () => {
               className={({ isActive }) =>
                 clsx(
                   isActive &&
-                    "underline-offset-4 decoration-orange-500 underline",
-                  "text-xl font-bold text-blue-950 underline-offset-4 hover:underline hover:decoration-orange-500"
+                    "underline-offset-4 decoration-simbase-orange-800 underline",
+                  "text-xl font-bold text-simbase-blue-900 underline-offset-4 hover:underline hover:decoration-orange-500"
                 )
               }
             >

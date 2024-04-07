@@ -21,7 +21,7 @@ export function FavouriteList({ cats, isLoading }: CatListProps) {
   const getButtonsForCat = (cat: { id: string; favouriteId: number }) => [
     {
       onClick: () => openRemoveFromFavouritesModal(cat.id, cat.favouriteId),
-      icon: <HiHeart className="text-red-500 text-3xl" />,
+      icon: <HiHeart className="text-simbase-orange-800 text-3xl" />,
       dataCyValue: "favourite-button",
     },
   ];
