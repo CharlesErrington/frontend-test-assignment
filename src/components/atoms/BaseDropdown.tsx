@@ -31,6 +31,7 @@ export const BaseDropdown = <T extends BaseDropdownValue>({
             className="w-full rounded-lg border border-transparent py-2 pl-3 pr-10 text-sm leading-5 text-simbase-blue-900 focus:border-simbase-orange-500 focus:outline-none"
             displayValue={(value: BaseDropdownValue) => value.name}
             onChange={(event) => setSearchString(event.target.value)}
+            readOnly
           />
           <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
             <HiChevronUpDown
