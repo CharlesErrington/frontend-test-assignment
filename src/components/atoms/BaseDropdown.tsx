@@ -1,22 +1,21 @@
 import { Combobox, Transition } from "@headlessui/react";
-import { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { HiCheck, HiChevronUpDown } from "react-icons/hi2";
 import { Fragment } from "react/jsx-runtime";
+import { useStore } from "../../store";
 
 type BaseDropdownValue = {
   name: string;
+  id: string;
 };
 export const BaseDropdown = <T extends BaseDropdownValue>({
   values,
-  setSelectedValue,
-  selectedValue,
 }: {
   values: T[];
-  setSelectedValue: Dispatch<SetStateAction<T>>;
-  selectedValue: T;
 }) => {
   const [searchString, setSearchString] = useState("");
+  const setSelectedBreed = useStore((state) => state.setSelectedBreed);
+  const selectedBreed = useStore((state) => state.selectedBreed);
   const filteredValues =
     searchString === ""
       ? values
@@ -25,7 +24,7 @@ export const BaseDropdown = <T extends BaseDropdownValue>({
         });
 
   return (
-    <Combobox value={selectedValue} onChange={setSelectedValue}>
+    <Combobox value={selectedBreed} onChange={setSelectedBreed}>
       <div className="relative z-10 mt-1">
         <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus:ring-transparent focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 sm:text-sm">
           <Combobox.Input

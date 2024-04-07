@@ -1,29 +1,17 @@
-import { Dispatch, SetStateAction } from "react";
-
 import CatsDropdown from "./CatsDropdown";
 import { Slider, SliderValue } from "@nextui-org/slider";
-import { SelectedBreed } from "./CatsDropdown";
+import { useStore } from "../../store";
 
 type FilterWrapperProps = {
   limitValue: SliderValue;
-  selectedBreed: SelectedBreed;
-  setSelectedBreed: Dispatch<SetStateAction<SelectedBreed>>;
-  setLimitValue: Dispatch<SetStateAction<SliderValue>>;
 };
 
-export function FilterWrapper({
-  limitValue,
-  selectedBreed,
-  setSelectedBreed,
-  setLimitValue,
-}: FilterWrapperProps) {
+export function FilterWrapper({ limitValue }: FilterWrapperProps) {
+  const setLimitValue = useStore((state) => state.setLimitValue);
   return (
     <div className=" z-10 w-[100%]" data-cy="filter-wrapper">
       <div className="my-5 flex flex-col justify-center gap-5 align-middle sm:flex-row sm:justify-start">
-        <CatsDropdown
-          selectedBreed={selectedBreed}
-          setSelectedBreed={setSelectedBreed}
-        />
+        <CatsDropdown />
         <div className="flex grow justify-center sm:max-w-52">
           <Slider
             data-cy="slider"

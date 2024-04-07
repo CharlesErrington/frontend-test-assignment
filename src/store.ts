@@ -1,4 +1,6 @@
 import { create } from "zustand";
+import { SliderValue } from "@nextui-org/slider";
+import { SelectedBreed } from "./components/molecules/CatsDropdown";
 
 type Store = {
   isDeleteCatsModalOpen: boolean;
@@ -12,6 +14,10 @@ type Store = {
   ) => void;
   closeRemoveFromFavouritesModal: () => void;
   selectedFavouriteId: number | undefined | null;
+  limitValue: SliderValue;
+  setLimitValue: (value: SliderValue) => void;
+  selectedBreed: SelectedBreed;
+  setSelectedBreed: (value: SelectedBreed) => void;
 };
 
 export const useStore = create<Store>((set) => ({
@@ -38,4 +44,8 @@ export const useStore = create<Store>((set) => ({
       selectedFavouriteId: null,
     }),
   selectedFavouriteId: null,
+  limitValue: 20,
+  setLimitValue: (value) => set({ limitValue: value }),
+  selectedBreed: { name: "Abyssinian", id: "abys" },
+  setSelectedBreed: (value) => set({ selectedBreed: value }),
 }));

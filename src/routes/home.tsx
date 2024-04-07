@@ -7,18 +7,14 @@ import { useGetCatsByBreed } from "../hooks/queries/useGetCatsByBreed";
 import { useGetFavouriteCats } from "../hooks/queries/useGetFavouriteCats";
 import { useAddToFavourites } from "../hooks/queries/useAddToFavourites";
 import { useRemoveFromFavourites } from "../hooks/queries/useRemoveFromFavourites";
-import { SliderValue } from "@nextui-org/slider";
+import { useStore } from "../store";
 import { catMapper } from "../utils/mapper";
-import { SelectedBreed } from "../components/molecules/CatsDropdown";
 import { ExtendedCat } from "../components/organisims/CatList";
 
 const Home = () => {
   const [mappedCats, setMappedCats] = useState<ExtendedCat[]>([]);
-  const [limitValue, setLimitValue] = useState<SliderValue>(20);
-  const [selectedBreed, setSelectedBreed] = useState<SelectedBreed>({
-    name: "Abyssinian",
-    id: "abys",
-  });
+  const selectedBreed = useStore((state) => state.selectedBreed);
+  const limitValue = useStore((state) => state.limitValue);
 
   const { cats, catsAreLoading } = useGetCatsByBreed(
     selectedBreed.id,
@@ -67,12 +63,7 @@ const Home = () => {
 
   return (
     <main className="container mx-auto px-4 md:px-8">
-      <FilterWrapper
-        selectedBreed={selectedBreed}
-        setSelectedBreed={setSelectedBreed}
-        setLimitValue={setLimitValue}
-        limitValue={limitValue}
-      />
+      <FilterWrapper limitValue={limitValue} />
       <CatList
         selectedBreed={selectedBreed}
         cats={mappedCats}
