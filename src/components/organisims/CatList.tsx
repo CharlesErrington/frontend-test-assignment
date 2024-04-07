@@ -2,18 +2,17 @@ import { CatItem } from "../molecules/CatItem";
 import { HiXMark, HiOutlineHeart, HiHeart } from "react-icons/hi2";
 import { useStore } from "../../store";
 import { PulseAnimation } from "../molecules/PulseAnimation";
+import { SelectedBreed } from "../molecules/CatsDropdown";
+import { BasicCat } from "../molecules/CatItem";
+
+export type ExtendedCat = BasicCat & {
+  isFavourite: boolean;
+  favouriteId?: number;
+};
 
 type CatListProps = {
-  selectedBreed: {
-    name: string;
-    id: string;
-  };
-  cats: {
-    url: string;
-    id: string;
-    isFavourite: boolean;
-    favouriteId?: number;
-  }[];
+  selectedBreed: SelectedBreed;
+  cats: ExtendedCat[];
   isLoading: boolean;
   onAddToFavourites: (imageId: string) => void;
 };

@@ -1,11 +1,8 @@
 import { CircularButton } from "../atoms/CircularButton";
+import { CircularButtonProps } from "../atoms/CircularButton";
 
 type CircularButtonContainerProps = {
-  buttons: {
-    icon: JSX.Element;
-    onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
-    dataCyValue?: string;
-  }[];
+  buttons: CircularButtonProps[];
 };
 
 export function CircularButtonContainer({

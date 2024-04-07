@@ -9,21 +9,16 @@ import { useAddToFavourites } from "../hooks/queries/useAddToFavourites";
 import { useRemoveFromFavourites } from "../hooks/queries/useRemoveFromFavourites";
 import { SliderValue } from "@nextui-org/slider";
 import { catMapper } from "../utils/mapper";
-
-type MappedCat = {
-  url: string;
-  id: string;
-  isFavourite: boolean;
-  favouriteId?: number;
-};
+import { SelectedBreed } from "../components/molecules/CatsDropdown";
+import { ExtendedCat } from "../components/organisims/CatList";
 
 const Home = () => {
-  const [mappedCats, setMappedCats] = useState<MappedCat[]>([]);
+  const [mappedCats, setMappedCats] = useState<ExtendedCat[]>([]);
   const [limitValue, setLimitValue] = useState<SliderValue>(20);
-  const [selectedBreed, setSelectedBreed] = useState<{
-    name: string;
-    id: string;
-  }>({ name: "Abyssinian", id: "abys" });
+  const [selectedBreed, setSelectedBreed] = useState<SelectedBreed>({
+    name: "Abyssinian",
+    id: "abys",
+  });
 
   const { cats, catsAreLoading } = useGetCatsByBreed(
     selectedBreed.id,

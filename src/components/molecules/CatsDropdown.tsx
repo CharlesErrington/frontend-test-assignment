@@ -2,12 +2,17 @@ import { Dispatch, SetStateAction } from "react";
 import { BaseDropdown } from "../atoms/BaseDropdown";
 import { useGetBreeds } from "../../hooks/queries/useGetBreeds";
 
+export type SelectedBreed = {
+  name: string;
+  id: string;
+};
+
 const CatsDropdown = ({
   setSelectedBreed,
   selectedBreed,
 }: {
-  selectedBreed: { name: string; id: string };
-  setSelectedBreed: Dispatch<SetStateAction<{ name: string; id: string }>>;
+  selectedBreed: SelectedBreed;
+  setSelectedBreed: Dispatch<SetStateAction<SelectedBreed>>;
 }) => {
   const { breeds } = useGetBreeds();
 

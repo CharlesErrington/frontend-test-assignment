@@ -2,14 +2,12 @@ import { Dispatch, SetStateAction } from "react";
 
 import CatsDropdown from "./CatsDropdown";
 import { Slider, SliderValue } from "@nextui-org/slider";
+import { SelectedBreed } from "./CatsDropdown";
 
 type FilterWrapperProps = {
   limitValue: SliderValue;
-  selectedBreed: {
-    name: string;
-    id: string;
-  };
-  setSelectedBreed: Dispatch<SetStateAction<{ name: string; id: string }>>;
+  selectedBreed: SelectedBreed;
+  setSelectedBreed: Dispatch<SetStateAction<SelectedBreed>>;
   setLimitValue: Dispatch<SetStateAction<SliderValue>>;
 };
 

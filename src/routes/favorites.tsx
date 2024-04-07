@@ -4,15 +4,10 @@ import { useGetFavouriteCats } from "../hooks/queries/useGetFavouriteCats";
 import { favouriteMapper } from "../utils/mapper";
 import { RemoveFavouritesModal } from "../components/molecules/RemoveFavouritesModal";
 import { FavouriteList } from "../components/organisims/FavouriteList";
-
-type Cat = {
-  url: string;
-  id: string;
-  favouriteId: number;
-};
+import { FavouriteCat } from "../components/organisims/FavouriteList";
 
 const Favorites = () => {
-  const [mappedCats, setMappedCats] = useState<Cat[]>([]);
+  const [mappedCats, setMappedCats] = useState<FavouriteCat[]>([]);
   const { favourites, favouritesAreLoading } = useGetFavouriteCats();
 
   useEffect(() => {

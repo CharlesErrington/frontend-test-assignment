@@ -1,4 +1,4 @@
-type CircularButtonProps = {
+export type CircularButtonProps = {
   icon: JSX.Element;
   onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
   dataCyValue?: string;

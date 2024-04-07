@@ -2,15 +2,14 @@ import { useStore } from "../../store";
 import { CatItem } from "../molecules/CatItem";
 import { HiHeart } from "react-icons/hi2";
 import { PulseAnimation } from "../molecules/PulseAnimation";
+import { BasicCat } from "../molecules/CatItem";
 
-type Cat = {
-  url: string;
-  id: string;
+export type FavouriteCat = BasicCat & {
   favouriteId: number;
 };
 
 type CatListProps = {
-  cats: Cat[] | undefined;
+  cats: FavouriteCat[] | undefined;
   isLoading: boolean;
 };
 

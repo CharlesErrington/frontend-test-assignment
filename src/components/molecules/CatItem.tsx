@@ -1,12 +1,14 @@
 import { CircularButtonContainer } from "./CircularButtonContainer";
+import { CircularButtonProps } from "../atoms/CircularButton";
+
+export type BasicCat = {
+  id: string;
+  url: string;
+};
 
 type CatItemProps = {
-  cat: { id: string; url: string };
-  buttons: {
-    icon: JSX.Element;
-    onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
-    dataCyValue?: string;
-  }[];
+  cat: BasicCat;
+  buttons: CircularButtonProps[];
 };
 
 export function CatItem({ cat, buttons }: CatItemProps) {
