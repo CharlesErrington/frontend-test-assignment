@@ -16,7 +16,7 @@ export function CatItem({ cat, buttons }: CatItemProps) {
         key={cat.id}
         className="relative flex justify-center overflow-hidden rounded-lg border shadow-md"
       >
-        <img src={cat.url} className="aspect-square object-cover " />
+        <img src={cat.url} className="aspect-square object-cover" />
         <CircularButtonContainer buttons={buttons} />
       </div>
     </div>

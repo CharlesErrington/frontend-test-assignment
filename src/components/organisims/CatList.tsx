@@ -1,6 +1,7 @@
 import { CatItem } from "../molecules/CatItem";
 import { HiXMark, HiOutlineHeart, HiHeart } from "react-icons/hi2";
 import { useStore } from "../../store";
+import { PulseAnimation } from "../molecules/PulseAnimation";
 
 type CatListProps = {
   selectedBreed: {
@@ -66,7 +67,13 @@ export function CatList({
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {Array.from({ length: 6 }).map((_, index) => (
+          <PulseAnimation key={index} />
+        ))}
+      </div>
+    );
   }
   return (
     <div
