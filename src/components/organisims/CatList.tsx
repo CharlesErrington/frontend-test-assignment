@@ -25,7 +25,7 @@ export function CatList({
 }: CatListProps) {
   const openDeleteCatsModal = useStore((state) => state.openDeleteCatsModal);
   const openRemoveFromFavouritesModal = useStore(
-    (state) => state.openRemoveFromFavouritesModal
+    (state) => state.openRemoveFromFavouritesModal,
   );
 
   const handleAddToFavourites = (imageId: string) => {
@@ -40,7 +40,7 @@ export function CatList({
     return [
       {
         onClick: () => openDeleteCatsModal(cat.id),
-        icon: <HiXMark className="text-simbase-blue-900 text-3xl" />,
+        icon: <HiXMark className="text-3xl text-simbase-blue-900" />,
         dataCyValue: "delete-button",
       },
       {
@@ -51,13 +51,13 @@ export function CatList({
         icon: cat.isFavourite ? (
           <HiHeart
             data-cy="HiHeart"
-            className="text-simbase-orange-800 text-3xl"
+            className="text-3xl text-simbase-orange-800"
           />
         ) : (
           <HiOutlineHeart
             data-cy="HiOutlineHeart"
             data-
-            className="text-simbase-orange-500 text-3xl"
+            className="text-3xl text-simbase-orange-500"
           />
         ),
         dataCyValue: "favourite-button",
@@ -70,7 +70,7 @@ export function CatList({
   }
   return (
     <div
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
+      className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
       data-cy="cat-list"
     >
       {selectedBreed &&

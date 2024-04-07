@@ -8,7 +8,7 @@ const routes = [
 
 const Routes = () => {
   return (
-    <div className="flex py-5 px-4 md:px-8 border shadow-md">
+    <div className="flex border px-4 py-5 shadow-md md:px-8">
       <div className="container flex space-x-4 ">
         {routes.map((route, idx) => {
           return (
@@ -19,8 +19,8 @@ const Routes = () => {
               className={({ isActive }) =>
                 clsx(
                   isActive &&
-                    "underline-offset-4 decoration-simbase-orange-800 underline",
-                  "text-xl font-bold text-simbase-blue-900 underline-offset-4 hover:underline hover:decoration-orange-500"
+                    "underline decoration-simbase-orange-800 underline-offset-4",
+                  "text-xl font-bold text-simbase-blue-900 underline-offset-4 hover:underline hover:decoration-orange-500",
                 )
               }
             >

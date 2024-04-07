@@ -11,7 +11,7 @@ export function CircularButton({
 }: CircularButtonProps) {
   return (
     <button
-      className="h-[100%] aspect-square bg-gray-100 rounded-full grid place-items-center"
+      className="grid aspect-square h-[100%] place-items-center rounded-full bg-gray-100"
       onClick={onClick}
       data-cy={dataCyValue}
     >

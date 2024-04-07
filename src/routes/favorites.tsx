@@ -24,7 +24,7 @@ const Favorites = () => {
   const { removeFromFavourites } = useRemoveFromFavourites();
   const handleRemoveFromFavourites = (
     id: string,
-    favouriteId?: number | null
+    favouriteId?: number | null,
   ) => {
     if (favouriteId) {
       removeFromFavourites(favouriteId);
@@ -33,7 +33,7 @@ const Favorites = () => {
   };
 
   return (
-    <main className="container mx-auto px-4 md:px-8 py-4">
+    <main className="container mx-auto px-4 py-4 md:px-8">
       <FavouriteList cats={mappedCats} isLoading={favouritesAreLoading} />
       <RemoveFavouritesModal removeFavourite={handleRemoveFromFavourites} />
     </main>

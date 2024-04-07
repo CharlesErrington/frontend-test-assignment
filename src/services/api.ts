@@ -2,12 +2,12 @@ import { Favourite, Breed, Cat } from "../types/types";
 
 export const fetchCatsByBreed = async (
   id: string,
-  limit: number
+  limit: number,
 ): Promise<Cat[]> => {
   try {
     const url = new URL(
       "v1/images/search/",
-      import.meta.env.VITE_CAT_API_ENDPOINT_URL
+      import.meta.env.VITE_CAT_API_ENDPOINT_URL,
     );
     url.searchParams.append("breed_ids", id);
     url.searchParams.append("limit", limit.toString());
@@ -20,7 +20,7 @@ export const fetchCatsByBreed = async (
     });
     if (!response.ok) {
       throw new Error(
-        `HTTP error for fetchCatsByBreed! status: ${response.status}`
+        `HTTP error for fetchCatsByBreed! status: ${response.status}`,
       );
     }
 
@@ -58,7 +58,7 @@ export const fetchFavouriteCats = async (): Promise<Favourite[]> => {
   try {
     const url = new URL(
       "v1/favourites",
-      import.meta.env.VITE_CAT_API_ENDPOINT_URL
+      import.meta.env.VITE_CAT_API_ENDPOINT_URL,
     );
     url.searchParams.append("order", "DESC");
 
@@ -71,7 +71,7 @@ export const fetchFavouriteCats = async (): Promise<Favourite[]> => {
 
     if (!response.ok) {
       throw new Error(
-        `HTTP error for fetchFavouriteCats! status: ${response.status}`
+        `HTTP error for fetchFavouriteCats! status: ${response.status}`,
       );
     }
 
@@ -87,7 +87,7 @@ export const addCatToFavourites = async (imageId: string) => {
   try {
     const url = new URL(
       "v1/favourites",
-      import.meta.env.VITE_CAT_API_ENDPOINT_URL
+      import.meta.env.VITE_CAT_API_ENDPOINT_URL,
     );
     const response = await fetch(url, {
       method: "POST",
@@ -102,7 +102,7 @@ export const addCatToFavourites = async (imageId: string) => {
 
     if (!response.ok) {
       throw new Error(
-        `HTTP error for addCatToFavourites! status: ${response.status}`
+        `HTTP error for addCatToFavourites! status: ${response.status}`,
       );
     }
   } catch (error) {
@@ -115,7 +115,7 @@ export const removeCatFromFavourites = async (favouriteId: number) => {
   try {
     const url = new URL(
       "v1/favourites/" + favouriteId.toString(),
-      import.meta.env.VITE_CAT_API_ENDPOINT_URL
+      import.meta.env.VITE_CAT_API_ENDPOINT_URL,
     );
 
     const response = await fetch(url, {
@@ -127,7 +127,7 @@ export const removeCatFromFavourites = async (favouriteId: number) => {
 
     if (!response.ok) {
       throw new Error(
-        `HTTP error for removeCatFromFavourites! status: ${response.status}`
+        `HTTP error for removeCatFromFavourites! status: ${response.status}`,
       );
     }
   } catch (error) {

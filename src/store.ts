@@ -8,7 +8,7 @@ type Store = {
   closeDeleteCatsModal: () => void;
   openRemoveFromFavouritesModal: (
     catId: string,
-    favouriteId: number | undefined | null
+    favouriteId: number | undefined | null,
   ) => void;
   closeRemoveFromFavouritesModal: () => void;
   selectedFavouriteId: number | undefined | null;
@@ -24,7 +24,7 @@ export const useStore = create<Store>((set) => ({
     set({ isDeleteCatsModalOpen: false, selectedCatId: null }),
   openRemoveFromFavouritesModal: (
     catId: string,
-    favouriteId: number | undefined | null
+    favouriteId: number | undefined | null,
   ) =>
     set({
       isRemoveFromFavouritesModalOpen: true,

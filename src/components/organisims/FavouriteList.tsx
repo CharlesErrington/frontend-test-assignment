@@ -15,13 +15,13 @@ type CatListProps = {
 
 export function FavouriteList({ cats, isLoading }: CatListProps) {
   const openRemoveFromFavouritesModal = useStore(
-    (state) => state.openRemoveFromFavouritesModal
+    (state) => state.openRemoveFromFavouritesModal,
   );
 
   const getButtonsForCat = (cat: { id: string; favouriteId: number }) => [
     {
       onClick: () => openRemoveFromFavouritesModal(cat.id, cat.favouriteId),
-      icon: <HiHeart className="text-simbase-orange-800 text-3xl" />,
+      icon: <HiHeart className="text-3xl text-simbase-orange-800" />,
       dataCyValue: "favourite-button",
     },
   ];
@@ -30,7 +30,7 @@ export function FavouriteList({ cats, isLoading }: CatListProps) {
     return <div>Loading...</div>;
   }
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {cats &&
         cats?.map((cat, index) => (
           <CatItem key={index} cat={cat} buttons={getButtonsForCat(cat)} />

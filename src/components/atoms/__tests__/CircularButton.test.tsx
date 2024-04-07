@@ -6,7 +6,7 @@ describe("CircularButton", () => {
   it("renders the button with the provided icon", () => {
     const mockIcon = <div data-testid="button-icon" />;
     render(
-      <CircularButton icon={mockIcon} onClick={() => console.log("Click")} />
+      <CircularButton icon={mockIcon} onClick={() => console.log("Click")} />,
     );
     expect(screen.getByTestId("button-icon")).toBeInTheDocument();
     expect(screen.getByRole("button")).toBeInTheDocument();

@@ -25,27 +25,27 @@ export const BaseModal = ({
       <div className="fixed inset-0 bg-black/50 " aria-hidden="true" />
 
       <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-        <Dialog.Panel className="w-96 p-4 mx-auto max-w-sm rounded-lg bg-white">
+        <Dialog.Panel className="mx-auto w-96 max-w-sm rounded-lg bg-white p-4">
           <div className="flex flex-col gap-4">
             <div>
-              <Dialog.Title className="font-semibold text-simbase-blue-900 text-lg">
+              <Dialog.Title className="text-lg font-semibold text-simbase-blue-900">
                 {baseModalTitle}
               </Dialog.Title>
 
-              <Dialog.Description className="text-gray-500 text-sm mt-2">
+              <Dialog.Description className="mt-2 text-sm text-gray-500">
                 {baseModalText}
               </Dialog.Description>
             </div>
 
             <div className="flex justify-end">
               <button
-                className="inline-flex items-center justify-center h-9 px-4 py-2 text-sm font-medium text-simbase-blue-900 transition-colors duration-150 ease-in-out bg-background border border-input rounded-md shadow-sm sm:mt-0 whitespace-nowrap hover:bg-gray-100 focus:outline-none"
+                className="border-input inline-flex h-9 items-center justify-center whitespace-nowrap rounded-md border bg-background px-4 py-2 text-sm font-medium text-simbase-blue-900 shadow-sm transition-colors duration-150 ease-in-out hover:bg-gray-100 focus:outline-none sm:mt-0"
                 onClick={onClose}
               >
                 Cancel
               </button>
               <button
-                className="inline-flex items-center justify-center ml-2 h-9 px-4 py-2 text-sm font-medium text-primary-foreground transition-colors duration-150 ease-in-out bg-simbase-blue-900 rounded-md shadow sm:space-x-2 whitespace-nowrap hover:bg-simbase-blue-800"
+                className="ml-2 inline-flex h-9 items-center justify-center whitespace-nowrap rounded-md bg-simbase-blue-900 px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors duration-150 ease-in-out hover:bg-simbase-blue-800 sm:space-x-2"
                 onClick={modalButtonAction}
               >
                 {modalButtonText}

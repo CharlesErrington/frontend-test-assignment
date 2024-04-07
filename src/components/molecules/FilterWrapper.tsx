@@ -20,13 +20,13 @@ export function FilterWrapper({
   setLimitValue,
 }: FilterWrapperProps) {
   return (
-    <div className=" w-[100%] z-10" data-cy="filter-wrapper">
-      <div className="my-5 flex flex-col sm:flex-row justify-center sm:justify-start align-middle gap-5">
+    <div className=" z-10 w-[100%]" data-cy="filter-wrapper">
+      <div className="my-5 flex flex-col justify-center gap-5 align-middle sm:flex-row sm:justify-start">
         <CatsDropdown
           selectedBreed={selectedBreed}
           setSelectedBreed={setSelectedBreed}
         />
-        <div className="flex justify-center sm:max-w-52 grow">
+        <div className="flex grow justify-center sm:max-w-52">
           <Slider
             data-cy="slider"
             size="sm"

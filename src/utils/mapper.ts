@@ -3,10 +3,10 @@ import { Cat, Favourite } from "../types/types";
 export const catMapper = (cats: Cat[], favourites: Favourite[]) => {
   const result = cats.map((cat) => {
     const isFavourite = favourites.some(
-      (favourite) => favourite.image_id === cat.id
+      (favourite) => favourite.image_id === cat.id,
     );
     const favouriteId = favourites.find(
-      (favourite) => favourite.image_id === cat.id
+      (favourite) => favourite.image_id === cat.id,
     )?.id;
     return {
       url: cat.url,

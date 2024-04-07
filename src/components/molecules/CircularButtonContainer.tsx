@@ -12,8 +12,8 @@ export function CircularButtonContainer({
   buttons,
 }: CircularButtonContainerProps) {
   return (
-    <div className="absolute bottom-2 w-auto h-[20%] max-h-20  bg-white/50 rounded-full ">
-      <div className="h-[100%] p-2 flex gap-4 justify-between">
+    <div className="absolute bottom-2 h-[20%] max-h-20 w-auto  rounded-full bg-white/50 ">
+      <div className="flex h-[100%] justify-between gap-4 p-2">
         {buttons.map((button, index) => (
           <CircularButton
             key={index}

@@ -27,7 +27,7 @@ const Home = () => {
 
   const { cats, catsAreLoading } = useGetCatsByBreed(
     selectedBreed.id,
-    limitValue as number
+    limitValue as number,
   );
 
   const { favourites, favouritesAreLoading } = useGetFavouriteCats();
@@ -37,23 +37,23 @@ const Home = () => {
     addToFavourites(imageId);
     setMappedCats((prevCats) =>
       prevCats.map((cat) =>
-        cat.id === imageId ? { ...cat, isFavourite: true } : cat
-      )
+        cat.id === imageId ? { ...cat, isFavourite: true } : cat,
+      ),
     );
   };
 
   const { removeFromFavourites } = useRemoveFromFavourites();
   const handleRemoveFromFavourites = (
     id: string,
-    favouriteId?: number | null
+    favouriteId?: number | null,
   ) => {
     if (favouriteId) {
       removeFromFavourites(favouriteId);
     }
     setMappedCats((prevCats) =>
       prevCats.map((cat) =>
-        cat.id === id ? { ...cat, isFavourite: false } : cat
-      )
+        cat.id === id ? { ...cat, isFavourite: false } : cat,
+      ),
     );
   };
 

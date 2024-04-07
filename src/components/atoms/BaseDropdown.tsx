@@ -26,10 +26,10 @@ export const BaseDropdown = <T extends BaseDropdownValue>({
 
   return (
     <Combobox value={selectedValue} onChange={setSelectedValue}>
-      <div className="relative mt-1 z-10">
-        <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus:ring-transparent sm:text-sm">
+      <div className="relative z-10 mt-1">
+        <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus:ring-transparent focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 sm:text-sm">
           <Combobox.Input
-            className="w-full py-2 pl-3 pr-10 text-sm leading-5 text-simbase-blue-900 rounded-lg border border-transparent focus:outline-none focus:border-simbase-orange-500"
+            className="w-full rounded-lg border border-transparent py-2 pl-3 pr-10 text-sm leading-5 text-simbase-blue-900 focus:border-simbase-orange-500 focus:outline-none"
             displayValue={(value: BaseDropdownValue) => value.name}
             onChange={(event) => setSearchString(event.target.value)}
           />

@@ -11,7 +11,7 @@ export function useRemoveFromFavourites() {
       queryClient.setQueryData(
         ["fetchFavouriteCats"],
         (favourites: Favourite[]) =>
-          favourites.filter((favourite) => favourite.id !== variables)
+          favourites.filter((favourite) => favourite.id !== variables),
       );
     },
   });
